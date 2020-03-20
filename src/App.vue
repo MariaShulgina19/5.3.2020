@@ -2,34 +2,29 @@
   <div id="app">
     
     <HelloWorld msg="HARBOUR TODAY"/>
-    <TellJoke/>
-    <TryShip msg2="Data last update" msg3="PortCallsID / Port to visit / Vessel Name" />
-    <AllShips msg6="ALL DATA" />
-     <ShipItem msg8="Ship coordinates by mmsi" />
-    <Map msg7="Map"  />
+    <AllShips msg6="Vessels called to Port / mmsi if availabe" />
+    <AllShipsFromPosition />
+    <map2to-test msg7="Map2toTest"  />
+    
     
   </div>
 </template>
 
 <script>
-// import * as ol from 'ol'; //importin openlayers library
+
 import HelloWorld from './components/HelloWorld.vue'
-import TellJoke from './components/TellJoke.vue'
-import TryShip from './components/TryShip.vue'
 import AllShips from './components/AllShips.vue'
-import ShipItem from './components/ShipItem.vue'
-import Map from './components/Map.vue'
+import AllShipsFromPosition from './components/AllShipsFromPosition.vue'
+import Map2toTest from './components/Map2toTest.vue'
 
 export default {
   name: 'App',
   Shipslist: [], //6.3.2020
   components: {
     HelloWorld,
-    TellJoke,
-    TryShip,
     AllShips,
-    ShipItem,
-    Map
+    Map2toTest,
+    AllShipsFromPosition ,
     
   }
 }
