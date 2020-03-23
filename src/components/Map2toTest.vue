@@ -43,7 +43,7 @@ import * as proj from 'ol/proj';
 
 //for Mouse Position control 19.03
  import {defaults as defaultControls} from 'ol/control';
-  import MousePosition from 'ol/control/MousePosition';
+ import MousePosition from 'ol/control/MousePosition';
 // import ZoomToExtent from 'ol/control/ZoomToExtent';
  
  
