@@ -4,7 +4,8 @@
     <HelloWorld msg="HARBOUR TODAY"/>
     <AllShips msg6="Vessels called to Port / mmsi if availabe" />
     <AllShipsFromPosition />
-    <map2to-test msg7="Map2toTest"  />
+    <!-- <map2to-test msg7="Map2toTest"  /> -->
+    <mapVUE msg8="MapVUE" />
     
     
   </div>
@@ -15,7 +16,8 @@
 import HelloWorld from './components/HelloWorld.vue'
 import AllShips from './components/AllShips.vue'
 import AllShipsFromPosition from './components/AllShipsFromPosition.vue'
-import Map2toTest from './components/Map2toTest.vue'
+// import Map2toTest from './components/Map2toTest.vue'
+import MapVUE from './components/MapVUE.vue'
 
 export default {
   name: 'App',
@@ -23,7 +25,8 @@ export default {
   components: {
     HelloWorld,
     AllShips,
-    Map2toTest,
+    // Map2toTest,
+    MapVUE,
     AllShipsFromPosition ,
     
   }
