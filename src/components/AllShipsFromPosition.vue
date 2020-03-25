@@ -2,7 +2,7 @@
   <div class="allshipsFromPosition">
 
      <div class="label">
-        <h5>Vessels in 30 km distance</h5>
+        <h5>Vessels in 50 km distance</h5>
         <button class="Buttion1" v-on:click ="Showcontent">Show/Hide Content</button>
      </div>
 
@@ -52,20 +52,23 @@ export default {
        testtable2:null,
        combinedtable:[],
 
-           //     currentDate:new Date().getFullYear()+'-'+(new Date().getMonth()+1)+'-'+new Date().getDate(),
+           //     currentDate:new Date().getFullYear()+'-'+(new Date().getMonth()+1)+'-'+new Date().getDate(), vv
            // yesterdayDate:this.currentDate-1,
-       newadress: `https://meri.digitraffic.fi/api/v1/locations/latitude/63.859912/longitude/23.03862/radius/30/from/2020-03-24T00:00Z`,
+       newadress: `https://meri.digitraffic.fi/api/v1/locations/latitude/63.859912/longitude/23.03862/radius/30/from/2020-03-25T08:00Z`,
           // All port calles for today
-       newadress2: `https://meri.digitraffic.fi/api/v1/locations/latitude/63.859912/longitude/23.03862/radius/30/from/` + new Date().getFullYear()+'-'+(new Date().getMonth()+1)+'-'+new Date().getDate()+'T'+new Date().getHours()+':'+new Date().getMinutes()+'Z',
-            // Vessel location by mmsi
-       newadress3:`https://meri.digitraffic.fi/api/v1/metadata/vessels/`,
+          //api gives information only two hourg ago
+       newadress2: `https://meri.digitraffic.fi/api/v1/locations/latitude/63.859912/longitude/23.03862/radius/50/from/`+ new Date().getFullYear()+'-'+("0" + (new Date().getMonth() + 1)).slice(-2)+'-'+("0" + new Date().getDate()).slice(-2)+'T'+("0" + (new Date().getHours()-4) ).slice(-2)+':'+("0" + new Date().getMinutes()).slice(-2)+'Z',
+      
+       //("0" + (new Date().getMonth() + 1)).slice(-2) // ("0" + new Date().getDate()).slice(-2) //("0" + (new Date().getHours()-2) ).slice(-2) //("0" + new Date().getMinutes()).slice(-2)
+            // Vessel location by mmsi 
+       newadress3:`https://meri.digitraffic.fi/api/v1/metadata/vessels/`,                                                             
       //  newadress4:`https://meri.digitraffic.fi/api/v1/metadata/vessels/`+allShipsMmsi //24.03 try
            //    newadress2: `https://meri.digitraffic.fi/api/v1/locations/latest/` //+ 356364000, 10.03
    
    
       } //return end
      }, //data end
-
+ 
     methods:{
             Showcontent: function(){
         
@@ -81,9 +84,12 @@ export default {
 //     }, 
 
     created(){ //mikä se on?
-           this.adress=this.newadress2
+            console.log(' this newadress '+ this.newadress);
+           console.log(' this newadress2 '+ this.newadress2);
+          
+          //  this.adress=this.newadress2
 
-           axios.get(this.newadress)  //FIKOK by date
+           axios.get(this.newadress2)  //FIKOK by date
                     // DATE has to change!
                     //how to do list from it?
                 
@@ -131,7 +137,7 @@ export default {
                       console.log(error);
                     
                     });
-                  console.log(' this.vesselName2 '+ this.vesselName) //null??
+                  // console.log(' this.vesselName2 '+ this.vesselName) //null??
 
 
                 }
@@ -140,7 +146,7 @@ export default {
           });// catch end
 
           //try to combine two lists from local storage that in includes evth
-console.log(' AAAA this.vesselName3 '+ this.vesselName) //null??
+// console.log(' AAAA this.vesselName3 '+ this.vesselName) //null??
  // taking coordinates2 from local storage
 
 
@@ -151,10 +157,10 @@ console.log(' AAAA this.vesselName3 '+ this.vesselName) //null??
     // console.log('testtable from local storage ' + this.testtable[0].coordinate)
 
      this.testtable2=JSON.parse(window.localStorage.getItem('allShipsList2'))
-    console.log('testtable from local storage2 ' + this.testtable2[0].vesselName)
-    console.log('testtable from local storage2 ' + this.testtable2[0].mmsi)
+            // console.log('testtable from local storage2 ' + this.testtable2[0].vesselName)
+            // console.log('testtable from local storage2 ' + this.testtable2[0].mmsi)
 
-    console.log('testtable from local storage ' + this.testtable[0].coordinate)
+            // console.log('testtable from local storage ' + this.testtable[0].coordinate)
 
     // this.combinedtable = stateMerge(this.testtable, this.testtable2)
     // console.log('TEST MERGE' + this.combinedtable)
@@ -178,7 +184,7 @@ console.log(' AAAA this.vesselName3 '+ this.vesselName) //null??
     //pushing combined data to local storage
                     // this.exportlist.push({coordinate:this.allShipsCoordinates, mmsi:this.allShipsMmsi} )
                     // const dataNearbyPort = JSON.stringify(this.exportlist)
-          //  window.localStorage.setItem('combinedtable', JSON.stringify(this.combinedtable));
+           window.localStorage.setItem('combinedtable', JSON.stringify(this.combinedtable));
          
 
 

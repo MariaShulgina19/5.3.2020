@@ -5,6 +5,7 @@
 <h5>MAP VUELAYERS</h5>
  <p>{{msg8}}</p> 
  <p>here is message{{ message }} current name {{ currentName }};   </p> 
+  <p>Time for data request  {{ timeofdatarequest}}; free data available with time delay  </p> 
 
 <!-- https://vuelayers.github.io/#/docs/quickstart -->
  <div>
@@ -161,7 +162,9 @@ export default {
         currentVesselName: undefined,
         mapCursor: 'default',
         markers2: null, 
-        markers3: null, 
+        markers3: null,
+        
+        timeofdatarequest: new Date().getFullYear()+'-'+("0" + (new Date().getMonth() + 1)).slice(-2)+'-'+("0" + new Date().getDate()).slice(-2)+' '+("0" + (new Date().getHours()-4) ).slice(-2)+':'+("0" + new Date().getMinutes()).slice(-2),
   
     }
   },
@@ -176,17 +179,17 @@ export default {
 
      // taking data from combinedtable from local storage
     this.markers3=JSON.parse(window.localStorage.getItem('combinedtable'))
-    console.log('markers3 from local storage' + this.markers3)
+   console.log('markers3 from local storage' + this.markers3)
 
  this.$nextTick(function () { //23.3
- console.log(this.markers3);
- console.log('this.markers2[0] ' + this.markers3[0].coordinate); //this.markers2[0]23.026658,63.840863  this.markers2[0]23.018,63.845
-  console.log(this.markers3[0].coordinate[0]+','+this.markers3[0].coordinate[1] );
-   console.log(this.markers3[0].coordinate);
-     console.log('this.markers2[0].mmsi ' + this.markers3[0].mmsi);
- console.log('this.markers2[1]' + this.markers3[1].coordinate); //this.markers2[1]230038140
- console.log('this.markers2[2]' + this.markers3[2].coordinate); //this.markers2[2]23.032455,63.8385
- console.log('this.markers2[3]' + this.markers3[3].coordinate); //this.markers2[3]230109170
+                // console.log(this.markers3);
+                // console.log('this.markers2[0] ' + this.markers3[0].coordinate); //this.markers2[0]23.026658,63.840863  this.markers2[0]23.018,63.845
+                //   console.log(this.markers3[0].coordinate[0]+','+this.markers3[0].coordinate[1] );
+                //   console.log(this.markers3[0].coordinate);
+                //     console.log('this.markers2[0].mmsi ' + this.markers3[0].mmsi);
+                // console.log('this.markers2[1]' + this.markers3[1].coordinate); //this.markers2[1]230038140
+                // console.log('this.markers2[2]' + this.markers3[2].coordinate); //this.markers2[2]23.032455,63.8385
+                // console.log('this.markers2[3]' + this.markers3[3].coordinate); //this.markers2[3]230109170
 //     this.loading = true
 //       this.loadFeatures().then(features => {
 //         this.features = features.map(Object.freeze)
