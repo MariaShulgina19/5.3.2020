@@ -77,9 +77,9 @@
               <vl-overlay id="overlay"  v-if="currentPosition" :position="currentPosition">
       <template slot-scope="scope">
         <div class="overlay-content">
-          Hello world!<br>
-          Position: {{ scope.position }}
-          Name:{{ currentName }}
+         <p style="font-weight: bold"> {{currentVesselName}} </p>  <br>
+         Position: {{ scope.position }}   <br>
+          mmsi:{{ currentName }}
         </div>
       </template>
     </vl-overlay>
@@ -158,8 +158,10 @@ export default {
         coordinate: null,
         currentPosition: undefined,
         currentName: undefined,
+        currentVesselName: undefined,
         mapCursor: 'default',
         markers2: null, 
+        markers3: null, 
   
     }
   },
@@ -167,12 +169,24 @@ export default {
 
 // 24.3
  mounted() {  
-    // taking coordinates2 from local storage
-    this.markers2=JSON.parse(window.localStorage.getItem('allShipsList'))
-    console.log('markers2 from local storage' + this.markers2)
+    // // taking coordinates2 from local storage
+    // this.markers2=JSON.parse(window.localStorage.getItem('allShipsList'))
+    // console.log('markers2 from local storage' + this.markers2)
+
+
+     // taking data from combinedtable from local storage
+    this.markers3=JSON.parse(window.localStorage.getItem('combinedtable'))
+    console.log('markers3 from local storage' + this.markers3)
 
  this.$nextTick(function () { //23.3
-
+ console.log(this.markers3);
+ console.log('this.markers2[0] ' + this.markers3[0].coordinate); //this.markers2[0]23.026658,63.840863  this.markers2[0]23.018,63.845
+  console.log(this.markers3[0].coordinate[0]+','+this.markers3[0].coordinate[1] );
+   console.log(this.markers3[0].coordinate);
+     console.log('this.markers2[0].mmsi ' + this.markers3[0].mmsi);
+ console.log('this.markers2[1]' + this.markers3[1].coordinate); //this.markers2[1]230038140
+ console.log('this.markers2[2]' + this.markers3[2].coordinate); //this.markers2[2]23.032455,63.8385
+ console.log('this.markers2[3]' + this.markers3[3].coordinate); //this.markers2[3]230109170
 //     this.loading = true
 //       this.loadFeatures().then(features => {
 //         this.features = features.map(Object.freeze)
@@ -184,22 +198,26 @@ export default {
 // },
 // pushing coordinates from local storage to myFeature/markers
 
-   for (var i=0; i<this.markers2.length; i++) { 
+   for (var i=0; i<this.markers3.length; i++) { ///change back ++
       this.myFeatureItem = 	{
           type: "Feature",
           id: i+1,
           properties: {
             special: true,
-            name: 'one',
+            name: this.markers3[i].mmsi,
+            vesselname:this.markers3[i].vesselName,
           },
           geometry: {
             type: "Point",
-            coordinates: this.markers2[i]
+            coordinates: [this.markers3[i].coordinate[0], this.markers3[i].coordinate[1]]  
+             
+            //  coordinates: [this.markers2[i].coordinate]  //(gives (2) [23.017833, 63.845167, __ob__: Observer]
           }
         },
+        // i++, //that it pick up only second data with coordinates
         this.features.push(this.myFeatureItem);
-        console.log(this.myFeatureItem);
-        console.log(this.myFeature);
+        // console.log('this.myFeatureitem'+ this.myFeatureItem);
+        // console.log(this.features);
 
       // this.myFeatureItem = new Feature({  // new marker
       //         // geometry: new Point(proj.fromLonLat(this.myCoordinates[i]) reads information from  readymade array
@@ -311,6 +329,7 @@ export default {
               this.mapCursor = 'pointer'
               this.currentPosition = proj.transform(hitFeature.getGeometry().getCoordinates(), 'EPSG:3857', 'EPSG:4326')
               this.currentName = hitFeature.get('name')
+              this.currentVesselName = hitFeature.get('vesselname')
             } else {
               this.mapCursor = 'default'
               this.currentPosition = this.currentName = undefined
@@ -348,7 +367,7 @@ padding: 2px */
   border: 1px solid #cccccc;
   bottom: 12px;
   left: 20px;
-  min-width: 140px;
+  min-width: 200px;
 }
 
 /* 18.03 syles for pop up */
