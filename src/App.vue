@@ -2,7 +2,7 @@
   <div id="app">
     
     <HelloWorld msg="HARBOUR TODAY"/>
-    <AllShips msg6="Vessels called to Port / mmsi if availabe" />
+    <AllShips msg6="Vessels called to Port" />
     <AllShipsFromPosition />
     <!-- <map2to-test msg7="Map2toTest"  /> -->
     <mapVUE msg8="MapVUE" />

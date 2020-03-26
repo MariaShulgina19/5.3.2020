@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <h1>{{ currentDateDay2 }}, {{ currentDate }}</h1>
+    <h1> {{ currentDate }}, {{ currentDateDay2 }}</h1>
     
   </div>
 </template>
@@ -15,7 +15,7 @@ export default {
 
   data: function() {
       return {
-  currentDate:new Date().getFullYear()+'-'+(new Date().getMonth()+1)+'-'+new Date().getDate(),
+  currentDate:new Date().getDate()+'-'+(new Date().getMonth()+1)+'-'+new Date().getFullYear(), //getDate
    days : ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
   months :["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
 //  currentDateDay2: this.days[new Date().getUTCDay()],

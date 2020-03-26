@@ -2,18 +2,38 @@
   <div class="allshipsFromPosition">
 
      <div class="label">
-        <h5>Vessels in 50 km distance</h5>
-        <button class="Buttion1" v-on:click ="Showcontent">Show/Hide Content</button>
+        <!-- <h5>Vessels in 50 km distance from Port</h5> -->
+        <button class="Buttion1" v-on:click ="Showcontent">Vessels in 50 km distance from Port</button>
      </div>
 
     <div class="content" v-show="isOpen">
          <!-- <li v-for= "item in allShipsList" v-bind:key = "item.id">{{ item.vesselName }} ,   {{ item.mmsi }} </li> -->
-         Testtable
+         <!-- Testtable
          <li v-for= "item in testtable" v-bind:key = "item.id">{{item}}  </li>
          Testtable2
-          <li v-for= "item in testtable2" v-bind:key = "item.id">{{item}}  </li>
-          Test merge
-          <li v-for= "item in combinedtable" v-bind:key = "item.id">{{item}}  </li>
+          <li v-for= "item in testtable2" v-bind:key = "item.id">{{item}}  </li> -->
+          <!-- Test merge
+          <li v-for= "item in combinedtable" v-bind:key = "item.id">{{item}}  </li> -->
+
+
+              <br>
+          <table class="vessels">
+
+            <tr>
+              <th>Vessel name</th>
+              <th>MMSI </th>
+              <th>Coordinate: lat, lon</th>
+            </tr>
+           
+            <br>
+
+            <tr v-for= "item in combinedtable" v-bind:key = "item.id"> 
+              <td>{{item.vesselName }}</td>
+              <td>{{item.mmsi }}</td>
+              <td>{{item.coordinate }}</td>
+            </tr>
+
+          </table>
   </div>
 
   </div>
@@ -203,18 +223,18 @@ export default {
 </script>
 <style >
 div.allshipsFromPosition{
-    border: 3px solid orange;
+    /* border: 3px solid orange; */
     padding: 20px;
     margin: 20px;
     width: 900px;
     text-align: left;
     display: inline-block;
 }
-.Buttion1{
+/* .Buttion1{
 
 border: 1px solid orange;
 
 
-}
+} */
 
 </style>

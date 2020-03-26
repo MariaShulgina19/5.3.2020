@@ -1,13 +1,33 @@
 <template>
   <div class="allships">
+
     <div class="label">
-      <h5>{{ msg6 }}, {{currentDate}}</h5>
-      <button class="Buttion1" v-on:click ="Showcontent">Show/Hide Content</button>
+      <!-- <h5>{{ msg6 }}, {{currentDate}}</h5> -->
+      <button class="Buttion1" v-on:click ="Showcontent">{{ msg6 }}</button> 
     </div>
     
 
     <div class="content" v-show="isOpen">
-          <li v-for= "item in allShips" v-bind:key = "item.id"> {{ item.vesselName }}, {{item.mmsi }}</li>
+          <!-- <li v-for= "item in allShips" v-bind:key = "item.id"> {{ item.vesselName }}, {{item.mmsi }}</li> -->
+          <br>
+          <br>
+          <table class="vessels">
+
+            <tr>
+              <th>Vessel name</th>
+              <th>MMSI / Maritime Mobile Service Identity</th>
+            </tr>
+
+            <br>
+
+            <tr v-for= "item in allShips" v-bind:key = "item.id"> 
+              <td>{{ item.vesselName }}</td>
+              <td>{{item.mmsi }}</td>
+            </tr>
+
+          </table>
+
+
 
     </div>
   </div>
@@ -118,7 +138,7 @@ export default {
 </script>
 <style >
 div.allships {
-    border: 3px solid red;
+   /* border: 3px solid rgb(37, 87, 107); */
     padding: 20px;
     margin: 20px;
     width: 900px;
@@ -127,9 +147,49 @@ div.allships {
 }
 .Buttion1{
 
-border: 1px solid red;
+    border: 3px solid rgb(37, 87, 107);
+    background-color:rgb(37, 87, 107);
+    color: white;
+    font-size: 20px;
+    border-radius: 12px;
+    padding: 20px;
+     /* margin: 20px; */
+    width: 900px;
 
 
 }
+
+.Buttion1:hover{
+
+   border: 4px solid white;
+
+}
+
+.vessels{
+    border-collapse: collapse;
+    width: 100%;
+    
+    /* padding-left: 10px; */
+
+}
+
+.vessels td, .vessels th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.vessels tr:nth-child(even){background-color: #f2f2f2;}
+
+.vessels tr:hover {background-color: #ddd;}
+
+
+.vessels th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: rgb(63, 142, 173);
+  color: white;
+}
+
 
 </style>

@@ -2,10 +2,10 @@
 
 <div id="Frame" class="Frame"> 
   
-<h5>MAP VUELAYERS</h5>
+<!-- <h5>MAP VUELAYERS</h5>
  <p>{{msg8}}</p> 
- <p>here is message{{ message }} current name {{ currentName }};   </p> 
-  <p>Time for data request  {{ timeofdatarequest}}; free data available with time delay  </p> 
+ <p>here is message{{ message }} current name {{ currentName }};   </p>  -->
+  <!-- <p>Time for data request  {{ timeofdatarequest}} free data  </p>  -->
 
 <!-- https://vuelayers.github.io/#/docs/quickstart -->
  <div>
@@ -90,11 +90,8 @@
 
       <!-- Overlay -->
 
-
-     
-
-
     </vl-map>
+   
     <!-- showing progress -->
     <!-- <div>
     <p v-if="loading">
@@ -105,14 +102,14 @@
     </p>
     </div> -->
 
-    <div style="padding: 20px">
+    <!-- <div style="padding: 20px">
       Zoom: {{ zoom }}<br>
       Center: {{ center }}<br>
       Rotation: {{ rotation }}<br>
       My geolocation: {{ geolocPosition }}
-    </div>
+    </div> -->
   </div>
-
+   <p>Note: Last update for free data request  {{ timeofdatarequest}}</p> 
 </div>
 </template>
 
@@ -349,10 +346,10 @@ export default {
 <style >
 
 .Frame {
-    border: 3px solid green; 
+    /* border: 3px solid green;  */
     padding: 20px;
     margin: 20px;
-    height: 600px;
+    height: 500px;
     width: 900px;
     text-align: center;
     display: inline-block;
